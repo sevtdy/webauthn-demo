@@ -1,0 +1,28 @@
+version: "3.8"
+
+volumes:
+  server_node_modules:
+  web_node_modules:
+
+services:
+  nginx:
+    build:
+      context: ./nginx/
+    depends_on:
+      - server
+      - web
+    ports:
+      - 3000:80
+  server:
+    build:
+      context: ./server/
+    volumes:
+      - ./server/:/node/app/
+      - server_node_modules:/node/app/node_modules/
+  web:
+    build:
+      context: ./web/
+    stdin_open: true
+    volumes:
+      - ./web/:/node/app
+      - web_node_modules:/node/app/node_modules/
