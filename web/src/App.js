@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Login from './pages/Login';
-import Register from './pages/Register';
+import SignUp from './pages/SignUp';
 import './App.css';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
           <Redirect to='/login' />
         </Route>
         <Route path='/login' component={Login} />
-        <Route path='/register' component={Register} />
+        <Route path='/signup' component={SignUp} />
       </Switch>
     </Router>
   );
