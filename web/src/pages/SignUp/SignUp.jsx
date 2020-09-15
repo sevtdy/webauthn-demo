@@ -9,7 +9,7 @@ export default function SignUp() {
   const onFinish = async (values) => {
     try {
       setLoading(true);
-      let creationOptions = await request.post('/challenge', { body: values });
+      let creationOptions = await request.post('/signup/challenge', { body: values });
       // console.log(creationOptions);
       let credential = await navigator.credentials.create({ publicKey: creationOptions });
       // console.log(credential);
