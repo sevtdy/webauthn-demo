@@ -9,22 +9,20 @@ export default function SignUp() {
   const onFinish = async (values) => {
     try {
       setLoading(true);
-      let creationOptions = await request.post('/signup/challenge', { body: values });
-      // console.log(creationOptions);
-      let credential = await navigator.credentials.create({ publicKey: creationOptions });
+      let credentialCreationOptions = await request.post('/signup/challenge', { body: values });
+      // console.log(credentialCreationOptions);
+      let credential = await navigator.credentials.create({ publicKey: credentialCreationOptions });
       // console.log(credential);
-      let obj = {
-        rawId: credential.rawId,
-        type: credential.type,
-        response: {
-          attestationObject: credential.response.attestationObject,
-          clientDataJSON: credential.response.clientDataJSON,
-        },
-      };
+      // credential.response.getTransports();
       await request.post('/signup', {
         body: {
-          ...obj,
           username: values.username,
+          rawId: credential.rawId,
+          type: credential.type,
+          response: {
+            attestationObject: credential.response.attestationObject,
+            clientDataJSON: credential.response.clientDataJSON,
+          },
         },
       });
       notification.success({

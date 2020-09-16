@@ -5,7 +5,7 @@ let detabase = {
     isRegister: true,
     publicKeys: [
       {
-        credId: 'base64',
+        credID: 'base64',
         counter: 10,
         publicKeyPem: 'string',
       },
