@@ -1,4 +1,4 @@
-let detabase = {
+let database = {
   example: {
     id: 'base64',
     username: 'example',
@@ -13,4 +13,4 @@ let detabase = {
   },
 };
 
-export default detabase;
+export default database;
